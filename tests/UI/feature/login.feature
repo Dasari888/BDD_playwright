@@ -3,13 +3,13 @@ Feature: Verify login
   Verify user is able to login with valid credentials and invalid credentials
 
   Background:
-    Given I navigate to the Url "https://boneplus.b1automation.com/"
+    Given I navigate to the Url "https://dev-dashboard-boneplus.b1automation.com"
 
   @valid
   Scenario: Verify user is able login with valid credentials
     And I enter the email "gangadhar@blazeautomation.com"
     And Click on submit button
-    And I enter the password "BAblaze#4329"
+    And I enter the password "Blaze#43215"
     When Click on the Submit button
     Then That should redirect to the Dashboard "/dashboard/"
 

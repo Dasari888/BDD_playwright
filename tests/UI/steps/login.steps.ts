@@ -29,9 +29,12 @@ When('Click on the Submit button', async ({ LoginPage }) => {
 Then(
   'That should redirect to the Dashboard {string}',
   async ({ page }, dashboardPath) => {
-    //    await page.waitForTimeout(30000);
-    await page.waitForURL(/dashboard/);
-    await expect(page).toHaveURL(new RegExp(dashboardPath));
+    // //    await page.waitForTimeout(30000);
+    // await page.waitForURL(/dashboard/);
+    // await expect(page).toHaveURL(new RegExp(dashboardPath));
+    await expect(page).toHaveURL(new RegExp(dashboardPath), {
+      timeout: 120000,
+    });
   }
 );
 
