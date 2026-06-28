@@ -3,8 +3,8 @@ import { test } from "../../../../tests/UI/fixture/Fixtures.ts";
 
 test.describe('Verify login', () => {
 
-  test.beforeEach('Background', async ({ Given, LoginPage, page }, testInfo) => { if (testInfo.error) return;
-    await Given('I navigate to the Url "https://boneplus.b1automation.com/"', null, { LoginPage, page }); 
+  test.beforeEach('Background', async ({ Given, page }, testInfo) => { if (testInfo.error) return;
+    await Given('I navigate to the Url "https://boneplus.b1automation.com/"', null, { page }); 
   });
   
   test('Verify user is able login with valid credentials', { tag: ['@login', '@valid'] }, async ({ When, Then, And, LoginPage, page }) => { 
@@ -12,33 +12,33 @@ test.describe('Verify login', () => {
     await And('Click on submit button', null, { LoginPage }); 
     await And('I enter the password "BAblaze#4329"', null, { LoginPage }); 
     await When('Click on the Submit button', null, { LoginPage }); 
-    await Then('That should redirect to the Dashboard "/dashboard/"', null, { LoginPage, page }); 
+    await Then('That should redirect to the Dashboard "/dashboard/"', null, { page }); 
   });
 
   test.describe('Verify user gets an error message with invalid credentials', () => {
 
-    test('Example #1', { tag: ['@login', '@invalid'] }, async ({ When, Then, And, LoginPage, page }) => { 
+    test('Example #1', { tag: ['@login', '@invalid'] }, async ({ When, Then, And, LoginPage }) => { 
       await And('I enter the email "wronguser@blazeautomation.com"', null, { LoginPage }); 
       await And('Click on submit button', null, { LoginPage }); 
       await And('I enter the password "BAblaze#4329"', null, { LoginPage }); 
       await When('Click on the Submit button', null, { LoginPage }); 
-      await Then('I should see an error message indicating "Invalid email or password"', null, { page }); 
+      await Then('I should see an error message indicating "Invalid email or password"'); 
     });
 
-    test('Example #2', { tag: ['@login', '@invalid'] }, async ({ When, Then, And, LoginPage, page }) => { 
+    test('Example #2', { tag: ['@login', '@invalid'] }, async ({ When, Then, And, LoginPage }) => { 
       await And('I enter the email "gangadhar@blazeautomation.com"', null, { LoginPage }); 
       await And('Click on submit button', null, { LoginPage }); 
       await And('I enter the password "WrongPassword"', null, { LoginPage }); 
       await When('Click on the Submit button', null, { LoginPage }); 
-      await Then('I should see an error message indicating "Invalid email or password"', null, { page }); 
+      await Then('I should see an error message indicating "Invalid email or password"'); 
     });
 
-    test('Example #3', { tag: ['@login', '@invalid'] }, async ({ When, Then, And, LoginPage, page }) => { 
+    test('Example #3', { tag: ['@login', '@invalid'] }, async ({ When, Then, And, LoginPage }) => { 
       await And('I enter the email "empty"', null, { LoginPage }); 
       await And('Click on submit button', null, { LoginPage }); 
       await And('I enter the password "BAblaze#4329"', null, { LoginPage }); 
       await When('Click on the Submit button', null, { LoginPage }); 
-      await Then('I should see an error message indicating "Please enter a valid email"', null, { page }); 
+      await Then('I should see an error message indicating "Please enter a valid email"'); 
     });
 
   });

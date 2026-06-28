@@ -1,12 +1,5 @@
 {
-    "cucumberautocomplete.steps": [
-        "tests/UI/stpes/login.steps.ts"
-    ]
-    ,
-    "cucumber.features": [
-    "tests/**/*.feature"
-  ],
-  "cucumber.glue": [
-    "tests/**/*.ts"
-  ]
+  "cucumberautocomplete.steps": ["tests/UI/stpes/login.steps.ts"],
+  "cucumber.features": ["tests/**/*.feature"],
+  "cucumber.glue": ["tests/**/*.ts"]
 }

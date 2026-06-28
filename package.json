@@ -3,14 +3,36 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "lint:ts": "eslint \"tests/**/*.{ts,js}\"",
+    "lint:feature": "node lint-features.js",
+    "lint": "npm run lint:ts && npm run lint:feature",
+    "lint:fix": "eslint \"tests/**/*.{ts,js}\" --fix",
+    "prepare": "husky",
+    "format": "prettier --check .",
+    "format:fix": "prettier --write ."
+   
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "type": "commonjs",
   "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@eslint/json": "^2.0.0",
     "@playwright/test": "^1.61.1",
     "@types/node": "^26.0.1",
-    "playwright-bdd": "^9.2.0"
+    "@typescript-eslint/eslint-plugin": "^8.62.0",
+    "@typescript-eslint/parser": "^8.62.0",
+    "eslint": "^10.6.0",
+    "eslint-plugin-playwright": "^2.10.4",
+    "gherkin-lint-plus": "^1.0.2",
+    "globals": "^17.7.0",
+    "husky": "^9.1.7",
+    "jiti": "^2.7.0",
+    "playwright-bdd": "^9.2.0",
+    "prettier": "^3.9.1",
+    "prettier-plugin-gherkin": "^4.0.0",
+    "typescript-eslint": "^8.62.0"
   }
 }

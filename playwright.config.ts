@@ -13,10 +13,9 @@ import { defineBddConfig } from 'playwright-bdd';
  * See https://playwright.dev/docs/test-configuration.
  */
 
-
 const testDir = defineBddConfig({
   features: 'tests/UI/feature/**.feature',
-  steps: ['tests/UI/steps/**.ts','tests/UI/fixture/Fixtures.ts'],
+  steps: ['tests/UI/steps/**.ts', 'tests/UI/fixture/Fixtures.ts'],
   // importTestFrom: 'tests/**/**/Fixtures.ts'
   // ...other playwright-bdd options
   // importTestFrom: 'tests/UI/fixture/Fixtures.ts',

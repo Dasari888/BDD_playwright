@@ -2,11 +2,11 @@
 Feature: Verify login
   Verify user is able to login with valid credentials and invalid credentials
 
-  Background: 
+  Background:
     Given I navigate to the Url "https://boneplus.b1automation.com/"
 
   @valid
-  Scenario: Verify user is able login with valid credentials 
+  Scenario: Verify user is able login with valid credentials
     And I enter the email "gangadhar@blazeautomation.com"
     And Click on submit button
     And I enter the password "BAblaze#4329"
@@ -22,7 +22,7 @@ Feature: Verify login
     Then I should see an error message indicating "<errorMessage>"
 
     Examples:
-      | email                         | password      | errorMessage                 |
-      | wronguser@blazeautomation.com | BAblaze#4329  | Invalid email or password   |
-      | gangadhar@blazeautomation.com | WrongPassword | Invalid email or password   |
-      | empty                         | BAblaze#4329  | Please enter a valid email  |
+      | email                         | password      | errorMessage               |
+      | wronguser@blazeautomation.com | BAblaze#4329  | Invalid email or password  |
+      | gangadhar@blazeautomation.com | WrongPassword | Invalid email or password  |
+      | empty                         | BAblaze#4329  | Please enter a valid email |
