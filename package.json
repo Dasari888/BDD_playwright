@@ -11,7 +11,19 @@
     "prepare": "husky",
     "format": "prettier --check .",
     "format:fix": "prettier --write ."
-   
+  },
+  "lint-staged": {
+    "*.ts": [
+      "eslint --fix tests/**/*.ts",
+      "prettier --write tests/**/*.ts"
+    ],
+    "*.feature": [
+      "node lint-features.js",
+      "prettier --write"
+    ],
+    "*.{json,md}": [
+      "prettier --write"
+    ]
   },
   "keywords": [],
   "author": "",
@@ -30,6 +42,7 @@
     "globals": "^17.7.0",
     "husky": "^9.1.7",
     "jiti": "^2.7.0",
+    "lint-staged": "^17.0.8",
     "playwright-bdd": "^9.2.0",
     "prettier": "^3.9.1",
     "prettier-plugin-gherkin": "^4.0.0",
