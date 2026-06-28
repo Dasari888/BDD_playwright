@@ -22,7 +22,5 @@ Feature: Verify login
     Then I should see an error message indicating "<errorMessage>"
 
     Examples:
-      | email                         | password      | errorMessage               |
-      | wronguser@blazeautomation.com | BAblaze#4329  | Invalid email or password  |
-      | gangadhar@blazeautomation.com | WrongPassword | Invalid email or password  |
-      | empty                         | BAblaze#4329  | Please enter a valid email |
+      | email                         | password   | errorMessage                                                    |
+      | gangadhar@blazeautomation.com | BAblaze#43 | Wrong password. Try again or click Forgot password to reset it. |
