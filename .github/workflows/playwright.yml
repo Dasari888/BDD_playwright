@@ -147,12 +147,17 @@ jobs:
 
       # --- REPORTING STEPS (Configured to always run even if tests fail) ---
 
-      - name: Install Java (required for Allure)
+      # - name: Install Java (required for Allure)
+      #   if: always()
+      #   run: |
+      #     sudo apt-get update
+      #     sudo apt-get install -y openjdk-11-jre
+      - name: Setup Java (required for Allure)
         if: always()
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y openjdk-11-jre
-
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin' # Highly stable and optimized production build
+          java-version: '17'      # Modern version that works flawlessly with Allure
       - name: Install Allure CLI globally
         if: always()
         run: npm install -g allure-commandline
