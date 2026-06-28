@@ -3,7 +3,6 @@ import { Buffer } from 'buffer';
 
 test('loginUI', async ({ page }) => {
   await page.goto('https://opensource-demo.orangehrmlive.com');
-  
 });
 
 test('login api', async ({ request }) => {
