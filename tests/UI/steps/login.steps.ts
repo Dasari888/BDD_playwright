@@ -7,6 +7,7 @@ const { Given, When, Then } = createBdd(test);
 Given('I navigate to the Url {string}', async ({ page }, url) => {
   console.log('test');
   await page.goto(url);
+  // await page.pause();
 });
 
 Given('I enter the email {string}', async ({ LoginPage }, email) => {
@@ -27,7 +28,7 @@ When('Click on the Submit button', async ({ LoginPage }) => {
 
 Then(
   'That should redirect to the Dashboard {string}',
-  async ({page }, dashboardPath) => {
+  async ({ page }, dashboardPath) => {
     //    await page.waitForTimeout(30000);
     await page.waitForURL(/dashboard/);
     await expect(page).toHaveURL(new RegExp(dashboardPath));
