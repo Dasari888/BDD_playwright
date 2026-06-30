@@ -166,12 +166,27 @@ jobs:
           path: allure-report/
           retention-days: 30
 
+      # - name: Deploy Allure report to Netlify
+      #   if: always()
+      #   run: |
+      #     npx netlify deploy \
+      #       --site ${{ secrets.NETLIFY_SITE_ID }} \
+      #       --prod \
+      #       --dir allure-report
+      #   env:
+      #     NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+
       - name: Deploy Allure report to Netlify
         if: always()
         run: |
-          npx netlify deploy \
-            --site ${{ secrets.NETLIFY_SITE_ID }} \
-            --prod \
-            --dir allure-report
-        env:
-          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          # Double check the directory exists and isn't empty to prevent 422 errors
+          if [ -d "allure-report" ] && [ "$(ls -A allure-report)" ]; then
+            npx netlify deploy \
+              --site "${{ secrets.NETLIFY_SITE_ID }}" \
+              --auth "${{ secrets.NETLIFY_AUTH_TOKEN }}" \
+              --prod \
+              --dir allure-report
+          else
+            echo "Error: allure-report directory is empty or does not exist."
+            exit 1
+          fi
