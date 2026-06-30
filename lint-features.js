@@ -5,7 +5,7 @@ const { execSync } = require('child_process');
 const files = glob.sync('tests/**/*.feature', { absolute: true });
 
 if (files.length === 0) {
-  console.log('⚠️  No feature files found.');
+  console.log('  No feature files found.');
   process.exit(0);
 }
 

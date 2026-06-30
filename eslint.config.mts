@@ -10,8 +10,6 @@
 //   { files: ["**/*.json"], plugins: { json }, language: "json/json", extends: ["json/recommended"] },
 // ]);
 
-
-
 import js from '@eslint/js';
 import globals from 'globals';
 import tseslint from 'typescript-eslint';
@@ -24,19 +22,19 @@ export default defineConfig([
   {
     files: ['**/*.{js,mjs,cjs,ts,mts,cts}'],
     languageOptions: {
-      parser: tseslint.parser, // ✅ TypeScript parser object
+      parser: tseslint.parser, //  TypeScript parser object
       globals: { ...globals.browser, ...globals.node },
     },
     plugins: { js, '@typescript-eslint': tseslint.plugin },
     extends: [
       js.configs.recommended,
       ...tseslint.configs.recommended,
-      playwright.configs['flat/recommended'], // ✅ flat config, not "plugin:..."
+      playwright.configs['flat/recommended'], // flat config, not "plugin:..."
     ],
     rules: {
-        // ✅ allow CommonJS require() statements
+      //  allow CommonJS require() statements
       '@typescript-eslint/no-var-requires': 'off',
-      // ✅ allow mixing import/require (useful for report.js)
+      // allow mixing import/require (useful for report.js)
       '@typescript-eslint/no-require-imports': 'off',
       'import/no-commonjs': 'off',
 
@@ -44,13 +42,13 @@ export default defineConfig([
       'no-await-in-loop': 'off',
       // allow stand-alone expect() in steps
       'playwright/no-standalone-expect': 'off',
-      // ❌ forbid page.pause()
+      // forbid page.pause()
       'no-restricted-syntax': [
         'error',
         {
           selector:
             "CallExpression[callee.object.name='page'][callee.property.name='pause']",
-          message: '❌ Do not use page.pause() in tests.',
+          message: 'Do not use page.pause() in tests.',
         },
       ],
     },
